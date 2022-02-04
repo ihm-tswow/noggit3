@@ -1453,7 +1453,7 @@ void MapChunk::save(sExtendableArray &lADTFile, int &lCurrentPosition, int &lMCI
         SetChunkHeader(lADTFile, lCurrentPosition, 'MCLQ', 0);
 
         lADTFile.GetPointer<MapChunkHeader>(lMCNK_Position + 8)->ofsLiquid = lCurrentPosition - lMCNK_Position;
-        lADTFile.GetPointer<MapChunkHeader>(lMCNK_Position + 8)->sizeLiquid = 8* + MCLQ_Size;
+        lADTFile.GetPointer<MapChunkHeader>(lMCNK_Position + 8)->sizeLiquid = 8 + MCLQ_Size;
 
         bool _use_mclq_green_lava = false;
 

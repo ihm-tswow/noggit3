@@ -1170,6 +1170,7 @@ void MapChunk::save(sExtendableArray &lADTFile, int &lCurrentPosition, int &lMCI
                                                                                                    // MCNK data
   lADTFile.Insert(lCurrentPosition + 8, 0x80, reinterpret_cast<char*>(&(header)));
   MapChunkHeader *lMCNK_header = lADTFile.GetPointer<MapChunkHeader>(lCurrentPosition + 8);
+  int headerPosition = lCurrentPosition + 8;
 
   header_flags.flags.do_not_fix_alpha_map = 1;
 
@@ -1618,10 +1619,11 @@ void MapChunk::save(sExtendableArray &lADTFile, int &lCurrentPosition, int &lMCI
             memcpy(lADTFile.GetPointer<char>(lCurrentPosition + 8), &mclqliquid, MCLQ_Size); // MCLQ_Size + 8 ?
             lCurrentPosition += 8 + MCLQ_Size;
             MCLQ_Size += 8 + MCLQ_Size;
-
         }
     }
   }
+
+  lADTFile.GetPointer<MapChunkHeader>(headerPosition + 8)->flags = header_flags.value;
 
 
   // MCSE

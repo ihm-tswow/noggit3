@@ -1441,6 +1441,7 @@ void MapChunk::save(sExtendableArray &lADTFile, int &lCurrentPosition, int &lMCI
   {
     // ChunkWater* Chunk = lTileWater.getChunk(0, 0); // chunks[z][x]->save(lADTFile, ofsW, header_pos, lCurrentPosition);
     ChunkWater* waterchunk = liquid_chunk();
+    MH2O_Render render = waterchunk->Render.value_or(MH2O_Render());
 
     if (waterchunk->hasData(0))
     {
@@ -1589,6 +1590,9 @@ void MapChunk::save(sExtendableArray &lADTFile, int &lCurrentPosition, int &lMCI
                         // mclqtile.liquid_type = mclq_liquid_type; // does this even work ?
 
                         mclqtile.liquid_type += mclq_liquid_type;
+
+                        mclqtile.fatigue = render.fatigue;
+                        mclqtile.fishable = render.fishable;
 
                         // todo : figure this weird mask
                         // if ((mh2oliquid._subchunks >> (z * 8 + x)) & 1)

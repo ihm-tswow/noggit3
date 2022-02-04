@@ -1623,7 +1623,7 @@ void MapChunk::save(sExtendableArray &lADTFile, int &lCurrentPosition, int &lMCI
     }
   }
 
-  lADTFile.GetPointer<MapChunkHeader>(headerPosition + 8)->flags = header_flags.value;
+  lADTFile.GetPointer<MapChunkHeader>(headerPosition)->flags = header_flags.value;
 
 
   // MCSE

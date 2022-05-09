@@ -10,8 +10,8 @@ jobs:
             compiler: g++-9
             compiler_c: gcc-9
           - platform: ubuntu-20.04
-            compiler: clang++
-            compiler_c: clang
+            compiler: clang++-11
+            compiler_c: clang-11
           - platform: windows-2019
             compiler: msvc2019 ## == vs 16
             compiler_c: msvc2019
